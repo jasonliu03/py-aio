@@ -26,7 +26,7 @@ Thread(target=monitor,args=(LOOP_COUNT,)).start()
 
 while True:
     start = time.time()
-    sock.send('hello world...')
+    sock.send(b'2')
     resp = sock.recv(100)
     end = time.time()
     n += 1
