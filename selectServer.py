@@ -19,3 +19,4 @@ while 1:
                 inputs.remove(r);
             else:
                 print data
+                r.send(data)
