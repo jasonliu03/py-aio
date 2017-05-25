@@ -21,14 +21,14 @@ def fib_handler(client):
             req = client.recv(100)
             if not req:
                 p.unregister(client)
-                #client.close()
                 fdmap.pop(client.fileno())
+                client.close()
                 break
         except Exception as e:
             print "Server.fib_handler Exception:", e
             p.unregister(client)
-            #client.close()
             fdmap.pop(client.fileno())
+            client.close()
             break
         else:
             n = int(req)
@@ -73,9 +73,9 @@ while 1:
                     num += 1
                     fib_handler(fdmap[fd])
                     num_done += 1
-#            elif events & select.POLLHUP:
-#                p.unregister(sock)
-#                sock.close()
-#                fdmap.pop(sock.fileno())
+            elif events & select.POLLHUP:
+                p.unregister(sock)
+                fdmap.pop(sock.fileno())
+                sock.close()
 
     #print "no data"
