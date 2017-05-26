@@ -15,7 +15,7 @@ def worker(count):
     global num_Exception
     bExcep = False
     sock = socket(AF_INET, SOCK_STREAM)
-    sock.connect(('10.21.1.88', 10001))
+    sock.connect(('localhost', 10001))
     while count > 0:
         try:
             count -= 1

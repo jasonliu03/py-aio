@@ -5,7 +5,7 @@ from socket import *
 from threading import Thread
 import time
 
-THREAD_COUNT = 400
+THREAD_COUNT = 100
 CONN_PER_THREAD = 1000
 
 num_Exception = 0
@@ -21,7 +21,7 @@ def worker(count):
             sock.send(b'1')
             resp = sock.recv(100)
         except Exception as e:
-            print "selectPerf-multiprocess.worker Exception:", e, "\n"
+            print "Perf-multiprocess.worker Exception:", e, "\n"
     if bExcep:
         num_Exception += 1
         print "num_Exception:", num_Exception
